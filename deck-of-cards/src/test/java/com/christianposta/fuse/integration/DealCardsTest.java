@@ -39,7 +39,10 @@ public class DealCardsTest extends CamelSpringTestSupport{
                         .end()
                         .log("What we have so far \"${body}\"")
                         .beanRef("dealer")
-                        .to("mock:players");
+                        .to("mock:players")
+                        .split(body())
+                        .marshal().xstream().to("stream:out");
+
 
             }
         };
