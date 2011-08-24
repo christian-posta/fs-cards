@@ -1,6 +1,7 @@
 package com.christianposta.fuse;
 
 import com.christianposta.fuse.cards.Card;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  * Created by IntelliJ IDEA.
@@ -9,6 +10,7 @@ import com.christianposta.fuse.cards.Card;
  * Time: 8:03 AM
  * To change this template use File | Settings | File Templates.
  */
+@XStreamAlias("player")
 public class Player {
 
     private String name;

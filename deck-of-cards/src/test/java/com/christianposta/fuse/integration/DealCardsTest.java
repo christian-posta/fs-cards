@@ -1,11 +1,13 @@
 package com.christianposta.fuse.integration;
 
 import com.christianposta.fuse.Player;
+import com.thoughtworks.xstream.XStream;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 import org.apache.camel.test.junit4.CamelSpringTestSupport;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -31,6 +33,12 @@ public class DealCardsTest extends CamelSpringTestSupport{
         return new RouteBuilder() {
             @Override
             public void configure() throws Exception {
+
+                XStream xStream = new XStream();
+                xStream.processAnnotations(Player.class);
+                XStreamDataFormat dataFormat = new XStreamDataFormat();
+                dataFormat.setXstream(xStream);
+
                 from("direct:file")
                         .split(body(String.class).tokenize("\n"), new PlayerAggregationStrategy())
                         .log("Player names: ${body}")
@@ -41,7 +49,7 @@ public class DealCardsTest extends CamelSpringTestSupport{
                         .beanRef("dealer")
                         .to("mock:players")
                         .split(body())
-                        .marshal().xstream().to("stream:out");
+                        .marshal(dataFormat).to("stream:out");
 
 
             }

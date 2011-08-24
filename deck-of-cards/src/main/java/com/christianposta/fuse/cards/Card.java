@@ -1,5 +1,6 @@
 package com.christianposta.fuse.cards;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.apache.commons.lang.builder.EqualsBuilder;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
  * in case the game changes to BlackJack and the ACE (or any card) can
  * have multiple values
  */
+@XStreamAlias("card")
 public class Card {
 
     private CardType type;
