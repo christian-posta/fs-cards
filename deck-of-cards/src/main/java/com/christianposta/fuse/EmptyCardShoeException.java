@@ -7,7 +7,7 @@ package com.christianposta.fuse;
  * Time: 8:48 PM
  * To change this template use File | Settings | File Templates.
  */
-public class EmptyCardShoeException extends RuntimeException{
+public class EmptyCardShoeException extends Exception{
     public EmptyCardShoeException(String message) {
         super(message);
     }
