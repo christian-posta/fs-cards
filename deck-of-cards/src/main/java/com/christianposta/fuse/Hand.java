@@ -25,4 +25,9 @@ public class Hand {
         Validate.notNull(card, "I cannot accept a null Card. There is no such thing as a null card.");
         this.cards.add(card);
     }
+
+    public int getNumberOfCards() {
+        return this.cards.size();
+    }
+
 }

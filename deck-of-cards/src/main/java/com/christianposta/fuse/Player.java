@@ -16,6 +16,7 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
+        this.playerHand = new Hand();
     }
 
     public String getName() {
@@ -24,5 +25,14 @@ public class Player {
 
     public void acceptCard(Card card) {
         this.playerHand.acceptCard(card);
+    }
+
+    @Override
+    public String toString() {
+        return "Player name: " + this.name;
+    }
+
+    public int getTotalNumCards() {
+        return playerHand.getNumberOfCards();
     }
 }

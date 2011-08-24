@@ -30,6 +30,13 @@ public class CardShoe {
 
     }
 
+    public static CardShoe createShoeWithDefaultCards() {
+        CardShoe shoe = new CardShoe();
+        shoe.addNewDefaultDeck();
+        return shoe;
+
+    }
+
     /**
      * Adds a new deck to the shoe. This must be called at least one time, or there will be no cards in the shoe
      *
@@ -81,4 +88,7 @@ public class CardShoe {
     }
 
 
+    public boolean cardsExist() {
+        return this.cards.size() > 0;
+    }
 }
