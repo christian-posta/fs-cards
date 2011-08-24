@@ -1,4 +1,4 @@
-package com.christianposta.fuse;
+package com.christianposta.fuse.cards;
 
 /**
  * Created by IntelliJ IDEA.

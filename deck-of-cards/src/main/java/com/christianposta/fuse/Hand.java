@@ -1,5 +1,6 @@
 package com.christianposta.fuse;
 
+import com.christianposta.fuse.cards.Card;
 import org.apache.commons.lang.Validate;
 
 import java.util.ArrayList;

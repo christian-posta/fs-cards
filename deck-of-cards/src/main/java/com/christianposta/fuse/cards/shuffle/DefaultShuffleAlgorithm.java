@@ -1,8 +1,9 @@
-package com.christianposta.fuse;
+package com.christianposta.fuse.cards.shuffle;
+
+import com.christianposta.fuse.cards.Card;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by IntelliJ IDEA.

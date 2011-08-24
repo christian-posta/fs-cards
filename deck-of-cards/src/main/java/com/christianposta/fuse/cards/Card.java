@@ -1,4 +1,4 @@
-package com.christianposta.fuse;
+package com.christianposta.fuse.cards;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 

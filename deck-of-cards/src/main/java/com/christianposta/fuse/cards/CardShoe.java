@@ -1,5 +1,7 @@
-package com.christianposta.fuse;
+package com.christianposta.fuse.cards;
 
+import com.christianposta.fuse.cards.shuffle.DefaultShuffleAlgorithm;
+import com.christianposta.fuse.cards.shuffle.ShuffleAlgorithm;
 import org.apache.commons.lang.Validate;
 
 import java.util.EmptyStackException;
@@ -70,7 +72,7 @@ public class CardShoe {
      * @return the next card from the shoe if a card exists
      * @throws EmptyCardShoeException when you attempt to deal a card and there are no cards in the shoe
      */
-    public Card dealCard() throws EmptyCardShoeException{
+    public Card dealCard() throws EmptyCardShoeException {
         try {
             return this.cards.pop();
         } catch (EmptyStackException e) {

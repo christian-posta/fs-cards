@@ -1,4 +1,4 @@
-package com.christianposta.fuse;
+package com.christianposta.fuse.cards;
 
 import java.util.ArrayList;
 import java.util.List;

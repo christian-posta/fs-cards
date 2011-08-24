@@ -1,5 +1,6 @@
-package com.christianposta.fuse;
+package com.christianposta.fuse.cards;
 
+import com.christianposta.fuse.cards.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

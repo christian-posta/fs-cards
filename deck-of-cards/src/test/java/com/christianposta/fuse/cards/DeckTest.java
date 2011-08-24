@@ -1,5 +1,9 @@
-package com.christianposta.fuse;
+package com.christianposta.fuse.cards;
 
+import com.christianposta.fuse.cards.Card;
+import com.christianposta.fuse.cards.CardType;
+import com.christianposta.fuse.cards.Deck;
+import com.christianposta.fuse.cards.Suit;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,5 +1,7 @@
 package com.christianposta.fuse;
 
+import com.christianposta.fuse.cards.Card;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ceposta

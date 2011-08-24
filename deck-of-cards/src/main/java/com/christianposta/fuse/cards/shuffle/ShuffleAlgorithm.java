@@ -1,6 +1,7 @@
-package com.christianposta.fuse;
+package com.christianposta.fuse.cards.shuffle;
 
-import java.util.Collection;
+import com.christianposta.fuse.cards.Card;
+
 import java.util.List;
 
 /**
