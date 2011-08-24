@@ -5,9 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -70,6 +68,22 @@ public class CardShoeTest {
         List<Card> first13Cards = dealFirst13Cards(shoe);
         assertEquals(13, first13Cards.size());
         assertFalse(allCardsSameSuit(first13Cards));
+
+    }
+
+    @Test(expected = EmptyCardShoeException.class)
+    public void test52Cards() throws EmptyCardShoeException {
+        CardShoe shoe = new CardShoe();
+        shoe.addNewDefaultDeck();
+
+        // deal all 52 cards
+        for (int i = 0; i < 52; ++i) {
+            shoe.dealCard();
+        }
+
+        // try to deal the 53rd card, which will not exist
+        shoe.dealCard();
+        fail("This cannot happen, there should not be 53 cards!");
 
     }
 
