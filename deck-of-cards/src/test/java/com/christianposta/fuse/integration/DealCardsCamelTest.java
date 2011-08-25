@@ -22,7 +22,7 @@ import java.util.List;
  * Time: 8:53 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DealCardsTest extends CamelSpringTestSupport{
+public class DealCardsCamelTest extends CamelSpringTestSupport{
     @Override
     protected AbstractApplicationContext createApplicationContext() {
         return new ClassPathXmlApplicationContext("/spring/deal-cards-context.xml");

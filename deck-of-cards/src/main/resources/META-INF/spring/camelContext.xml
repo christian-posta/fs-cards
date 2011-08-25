@@ -8,9 +8,21 @@
        http://camel.apache.org/schema/spring
        http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="routingBean" class="com.christianposta.fuse.integration.CardRoutingDefinition" />
-    <bean id="dealer" class="com.christianposta.fuse.Dealer" />
 
+    <!--
+        Set the properties on the dealer, one of which can be the Shoe from which to deal cards.
+        Note, by injecting the shoe (optional), you can control how many decks of cards are involved,
+        the shuffling strategy, etc. See CardShoe.java for more info.
+     -->
+    <bean id="dealer" class="com.christianposta.fuse.Dealer">
+        <property name="numCardsToDeal" value="5" />
+    </bean>
+
+
+    <!-- This is where the routing definitions are written, in the camel DSL language (java) -->
+    <bean id="routingBean" class="com.christianposta.fuse.integration.CardRoutingDefinition" />
+
+    <!-- Instantiate the context for the camel container -->
     <camel:camelContext>
         <camel:routeBuilder ref="routingBean" />
     </camel:camelContext>

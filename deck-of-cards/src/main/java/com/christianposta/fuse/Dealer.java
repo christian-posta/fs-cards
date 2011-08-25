@@ -6,11 +6,7 @@ import com.christianposta.fuse.cards.EmptyCardShoeException;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ceposta
- * Date: 8/24/11
- * Time: 11:47 AM
- * To change this template use File | Settings | File Templates.
+ * Main abstraction for 'dealing' cards to players
  */
 public class Dealer {
     public static final int DEFAULT_NUM_CARDS_TO_DEAL = 5;
@@ -18,16 +14,30 @@ public class Dealer {
     private CardShoe shoe;
     private int numCardsToDeal;
 
+    /**
+     * Create a dealer with a default number of decks with the default
+     * shuffle algorithm
+     */
     public Dealer() {
         this(CardShoe.createShoeWithDefaultCards());
     }
 
+    /**
+     * Allows more control over how the card shuffling happens, how many card decks, etc.
+     * @param shoe
+     */
     public Dealer(CardShoe shoe) {
         this.shoe = shoe;
         this.shoe.shuffle();
         this.numCardsToDeal = DEFAULT_NUM_CARDS_TO_DEAL;
     }
 
+    /**
+     * Deals cards to a list of players. The number of cards that are dealt can be specified
+     * by the numCardsToDeal property
+     *
+     * @param players list of players to which cards will be dealt
+     */
     public void dealCardsToPlayers(List<Player> players) {
         int numberOfDealRounds = 0;
 

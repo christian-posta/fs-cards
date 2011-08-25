@@ -8,6 +8,13 @@
     <artifactId>deck-of-cards</artifactId>
     <version>1.0</version>
 
+    <name>Camel Deals Cards</name>
+    <description>
+        An example solution for reading a set of names from a file (that represent players) and
+        dealing cards to them. The dealt cards will be stored in XML
+    </description>
+
+
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
