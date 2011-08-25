@@ -38,6 +38,7 @@ public class DealCardsTest extends CamelSpringTestSupport{
                 xStream.processAnnotations(Player.class);
                 XStreamDataFormat dataFormat = new XStreamDataFormat();
                 dataFormat.setXstream(xStream);
+                dataFormat.setEncoding("UTF-8");
 
                 from("direct:file")
                         .split(body(String.class).tokenize("\n"), new PlayerAggregationStrategy())

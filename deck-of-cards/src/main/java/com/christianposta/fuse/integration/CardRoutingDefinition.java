@@ -22,6 +22,8 @@ public class CardRoutingDefinition extends SpringRouteBuilder {
         xStream.processAnnotations(Player.class);
         XStreamDataFormat dataFormat = new XStreamDataFormat();
         dataFormat.setXstream(xStream);
+        dataFormat.setEncoding("UTF-8");
+
         from("file:data/users?noop=true")
                 .split(body(String.class).tokenize("\n"), new PlayerAggregationStrategy())
                 .log("Player names: ${body}")
