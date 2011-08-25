@@ -9,6 +9,7 @@
        http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean id="routingBean" class="com.christianposta.fuse.integration.CardRoutingDefinition" />
+    <bean id="dealer" class="com.christianposta.fuse.Dealer" />
 
     <camel:camelContext>
         <camel:routeBuilder ref="routingBean" />

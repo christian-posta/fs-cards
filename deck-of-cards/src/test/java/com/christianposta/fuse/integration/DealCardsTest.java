@@ -3,8 +3,6 @@ package com.christianposta.fuse.integration;
 import com.christianposta.fuse.Player;
 import com.thoughtworks.xstream.XStream;
 import org.apache.camel.Exchange;
-import org.apache.camel.Message;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.dataformat.xstream.XStreamDataFormat;
