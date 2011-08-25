@@ -4,6 +4,7 @@ import com.christianposta.fuse.Player;
 import com.thoughtworks.xstream.XStream;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.camel.builder.xml.XPathBuilder;
 import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 import org.apache.camel.spring.SpringRouteBuilder;
 
@@ -29,7 +30,8 @@ public class CardRoutingDefinition extends SpringRouteBuilder {
                 .log("What we have so far \"${body}\"")
                 .beanRef("dealer")
                 .split(body())
-                .marshal(dataFormat).setHeader(Exchange.FILE_NAME, xpath("/player/name/text()"))
+                .marshal(dataFormat)
+                .setHeader(Exchange.FILE_NAME, XPathBuilder.xpath("concat(/player/name, '.xml')", String.class))
                 .to("file:data/cards");
     }
 }

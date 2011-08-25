@@ -4,12 +4,14 @@ import com.christianposta.fuse.Player;
 import com.thoughtworks.xstream.XStream;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.builder.xml.XPathBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 import org.apache.camel.test.junit4.CamelSpringTestSupport;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import static org.apache.camel.builder.xml.XPathBuilder.xpath;
 
 import java.util.List;
 
@@ -47,7 +49,10 @@ public class DealCardsTest extends CamelSpringTestSupport{
                         .beanRef("dealer")
                         .to("mock:players")
                         .split(body())
-                        .marshal(dataFormat).to("stream:out");
+                        .marshal(dataFormat)
+                        .setHeader(Exchange.FILE_NAME, XPathBuilder.xpath("concat(/player/name, '.xml')", String.class))
+                        .to("mock:files")
+                        .to("stream:out");
 
 
             }
@@ -73,6 +78,11 @@ public class DealCardsTest extends CamelSpringTestSupport{
         MockEndpoint splitMockEndpoint = getMockEndpoint("mock:split");
         splitMockEndpoint.expectedMessageCount(2);
         splitMockEndpoint.allMessages().body(Player.class);
+
+        MockEndpoint filesEndpoint = getMockEndpoint("mock:files");
+        filesEndpoint.expectedMessageCount(2);
+        filesEndpoint.message(0).header(Exchange.FILE_NAME).isEqualTo("christian.xml");
+        filesEndpoint.message(1).header(Exchange.FILE_NAME).isEqualTo("todd.xml");
 
         template.sendBody("direct:file", "christian\ntodd");
 
